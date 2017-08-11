@@ -1,0 +1,95 @@
+.dayView {
+	box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	padding: 15px;
+	border-radius: 5px;
+	position: relative;
+	max-width: 600px;
+	width: 100%;
+	margin: 2% auto;
+	@media screen and (max-width: 650px) {
+		margin: 0 auto;
+		box-shadow: none;
+	}
+}
+
+.dayEvent {
+	background-color: #999;
+	padding: 10px;
+	border-radius: 3px;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+	margin: 10px;
+	position: relative;
+}
+
+.header {
+	font-size: 20px;
+}
+
+.body {
+	font-size: 13px;
+}
+
+.addOptions {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	div {
+		min-width: 250px;
+		margin-top: 15px;
+	}
+}
+
+.addOptions div {
+	flex: 1;
+	box-sizing: border-box;
+}
+
+.saveFlex {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.saveFlex button {
+	margin-right: 10px;
+	color: #7CC;
+}
+
+.eventList {
+	border-top: 1px solid #ccc;
+	margin-top: 10px;
+	min-height: 400px;
+	max-height: 70vh;
+	overflow: auto;
+}
+.editButtons {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	font-size: 13px;
+	display: flex;
+	width: 40px;
+	justify-content: space-between;
+}
+.editButtons span {
+	cursor: pointer;
+	padding: 1px 3px;
+	border-radius: 100%;
+	transition: all 0.3s ease-in-out;
+	&:hover {
+		background-color: rgba(0,0,0,0.3);
+	}
+}
+.editButtons span i {
+	color: #333;
+}
+
+.editButton {
+	color: #7CC;
+	padding: 5px 10px;
+	font-size: 14px;
+	background-color: rgba(0,0,0,0.1);
+	&:hover {
+		background-color: rgba(0,0,0,0.5);
+	}
+}

@@ -1,0 +1,71 @@
+body
+{
+	margin: 0;
+	font-family: 'Roboto', arial;
+}
+
+button {
+	font-size: 15px;
+	padding: 9px 13px;
+	background-color: transparent;
+	transition: all 0.3s ease-in-out;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	color: #666;
+	margin: 3px;
+	outline: none;
+	&:hover {
+		background-color: #eee;
+	}
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+h2 {
+	font-weight: lighter;
+	@media screen and (max-width: 650px) {
+		font-size: 20px;
+	}
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 16px;
+	margin: 15px 0 5px 5px;
+}
+
+input {
+	padding: 5px 10px;
+	border-radius: 3px;
+	border: 1px solid #ccc;
+	margin: 3px;
+	width: 95%;
+	box-sizing: border-box;
+}
+
+.edit input {
+	background-color: rgba(200, 200, 200, 0.8);
+	border: 1px solid #666;
+	max-width: 350px;
+	display: block;
+}
+
+label {
+	font-size: 13px;
+	font-weight: bold;
+	margin-left: 5px;
+	color: #5AA;
+}
+
+.edit label {
+	color: #333;
+}

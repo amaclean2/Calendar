@@ -1,0 +1,166 @@
+$smallScreen: 700px;
+$oneSeventh: 14.25%;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import './HTMLElements';
+@import './DayViewStyle';
+@import './animations';
+@import './LoginStyle';
+@import './DeleteStyle';
+
+.monthView {
+	box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+	box-sizing: border-box;
+	padding: 15px;
+	border-radius: 5px;
+	position: relative;
+	max-width: 1200px;
+	width: 100%;
+	margin: 2% auto;
+	@media screen and (max-width: 650px) {
+		box-shadow: none;
+		margin: 0 auto;
+	}
+}
+
+.buttons {
+	position: absolute;
+	display: flex;
+	justify-content: space-around;
+	top: 10px;
+	right: 10px;
+}
+
+.smallScreenHeader {
+	display: flex;
+	@media screen and (min-width: 651px) {
+		display: none;
+	}
+}
+
+.largeScreenHeader {
+	display: flex;
+	@media screen and (max-width: 650px) {
+		display: none;
+	}
+}
+
+.largeScreenHeader li, .smallScreenHeader li {
+	flex: 1;
+	text-align: center;
+	background-color: #000;
+	color: #FFF;
+	text-transform: uppercase;
+	font-weight: lighter;
+	font-size: 13px;
+	padding: 5px 0;
+	@media screen and (max-width: 650px) {
+		background-color: #FFF;
+		color: #000;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
+}
+
+.week {
+	display: flex;
+	@media screen and (max-width: 650px) {
+		justify-content: space-around;
+		margin: 5px 0;
+	}
+}
+.day {
+	flex: 1;
+	text-align: right;
+	height: 120px;
+	font-size: 13px;
+	color: #333;
+	padding: 5px;
+	box-sizing: border-box;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	overflow: hidden;
+	@media screen and (max-width: 650px) {
+		text-align: center;
+		height: 30px;
+		max-width: 30px;
+		border-radius: 100%;
+		padding-top: 7px;
+		&:hover {
+			background-color: #eee;
+		}
+	}
+}
+.darkDay {
+	background-color: #DDD;
+	@media screen and (max-width: 650px) {
+		background-color: transparent;
+		color: #ccc;
+	}
+}
+.today {
+	background-color: #7CC;
+}
+
+.specialButton {
+	background-color: #f6f6f6;
+}
+
+.addBig {
+	display: block;
+	@media screen and (max-width: 650px) {
+		display: none;
+	}
+}
+.addSmall {
+	display: none;
+	@media screen and (max-width: 650px) {
+		display: block;
+	}
+}
+
+.events {
+	width: 100%;
+	height: 83%;
+	margin: auto;
+	box-sizing: border-box;
+	padding: 3px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
+	&:hover {
+		background-color: rgba(0,0,0,0.2);
+	}
+	@media screen and (max-width: 650px) {
+		padding: 0;
+		&:hover {
+			background-color: transparent;
+		}
+	}
+}
+
+.event {
+	background-color: #666;
+	color: #FFF;
+	padding: 1.5px 8px;
+	width: 100%;
+	box-sizing: border-box;
+	border-radius: 3px;
+	font-weight: lighter;
+	display: block;
+	overflow: hidden;
+	margin: 2px 0;
+	@media screen and (max-width: 650px) {
+		width: 5px;
+		height: 5px;
+		border-radius: 100%;
+		padding: 0;
+		color: #7CC;
+		background-color: #7CC;
+		margin: 0 auto;
+	}
+}
+
+
+

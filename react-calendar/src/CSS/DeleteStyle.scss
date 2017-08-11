@@ -1,0 +1,42 @@
+.deleteModal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
+
+	.window {
+		width: 100%;
+		max-width: 350px;
+		height: 200px;
+		border-radius: 5px;
+		box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+		background-color: #FFF;
+		margin: 20vh auto;
+		box-sizing: border-box;
+		padding: 15px;
+		text-align: center;
+	}
+
+	h2 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.name {
+			font-weight: normal;
+			font-size: 20px;
+			padding: 8px;
+		}
+	}
+	.modalButtons {
+		display: flex;
+		margin-top: 40px;
+		justify-content: space-around;
+		.warn {
+			color: #F33;
+		}
+	}
+}
