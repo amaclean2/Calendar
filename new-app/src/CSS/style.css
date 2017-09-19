@@ -36,13 +36,14 @@ h3 {
   font-size: 16px;
   margin: 15px 0 5px 5px; }
 
-input {
+input, select {
   padding: 5px 10px;
   border-radius: 3px;
   border: 1px solid #ccc;
   margin: 3px;
   width: 95%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #FFF; }
 
 .edit input {
   background-color: rgba(200, 200, 200, 0.8);
@@ -86,6 +87,18 @@ label {
 
 .body {
   font-size: 13px; }
+
+.time .entries {
+  margin-left: 10px;
+  display: inline; }
+  .time .entries .time-units {
+    padding: 2px;
+    margin: 2px;
+    max-width: 35px;
+    border: 1px solid #EEE;
+    text-align: center; }
+  .time .entries select {
+    max-width: 50px; }
 
 .addOptions {
   display: flex;
