@@ -8,6 +8,9 @@ class DayEvent extends Component {
 		this.state = {
 			header: null,
 			body: null,
+			hour: null,
+			minute: null,
+			ap: null,
 			edit: false,
 			delete: false
 		}
@@ -15,6 +18,9 @@ class DayEvent extends Component {
 		this.toggleEdit=this.toggleEdit.bind(this);
 		this.editHeader=this.editHeader.bind(this);
 		this.editBody=this.editBody.bind(this);
+		this.editHour=this.editHour.bind(this);
+		this.editMinute=this.editMinute.bind(this);
+		this.editAP=this.editAP.bind(this);
 		this.reset=this.reset.bind(this);
 	}
 
@@ -46,6 +52,21 @@ class DayEvent extends Component {
 		this.setState({body: newBody});
 	}
 
+	editHour(e) {
+		let newHour = e.target.value;
+		this.setState({hour: newHour});
+	}
+
+	editMinute(e) {
+		let newMinute = e.target.value;
+		this.setState({minute: newMinute});
+	}
+
+	editAP(e) {
+		let newAP = e.target.value;
+		this.setState({ap: newAP});
+	}
+
 	reset() {
 		this.toggleEdit();
 		this.props.put(this.props.event.id, this.state.header, this.state.body);
@@ -69,10 +90,14 @@ class DayEvent extends Component {
 		} else {
 			return (
 				<div>
-					<span className="header">{ this.props.event.header }</span><br />
-	        <span className="body">{ this.props.event.body }</span>
+					<span className="header">{ this.props.event.header }</span>
+					<br />
+	        		<span className="body">
+	        			<span>{ this.props.event.hour }:{ this.props.event.minute } {this.props.event.ap } - </span>
+	        			{ this.props.event.body }
+	        		</span>
 				</div>
-				)
+			)
 		}
 	}
 

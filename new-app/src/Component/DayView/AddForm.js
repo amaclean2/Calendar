@@ -15,6 +15,7 @@ class AddForm extends Component {
     this.updateHours=this.updateHours.bind(this);
     this.updateMinutes=this.updateMinutes.bind(this);
     this.updateAP=this.updateAP.bind(this);
+    this.handleFocus=this.handleFocus.bind(this);
   }
 
   updateHeader(e) {
@@ -42,6 +43,10 @@ class AddForm extends Component {
     this.setState({ap: newAP});
   }
 
+  handleFocus(e) {
+    e.target.select();
+  }
+
   render() {
     
     return (
@@ -59,9 +64,9 @@ class AddForm extends Component {
         <div className="time">
           <label>Start Time</label>
           <div className="entries">
-            <input type="number" className="hours time-units" defaultValue="00" onChange={this.updateHours}/>
+            <input type="number" className="hours time-units" defaultValue="00" onChange={this.updateHours} onFocus={this.handleFocus} />
             :
-            <input type="number" className="minutes time-units" defaultValue="00" onChange={this.updateMinutes}/>
+            <input type="number" className="minutes time-units" defaultValue="00" onChange={this.updateMinutes} onFocus={this.handleFocus}/>
             <select onChange={this.updateAP}>
               <option value="AM">AM</option>
               <option value="PM">PM</option>
@@ -69,7 +74,7 @@ class AddForm extends Component {
           </div>
         </div>
         <div className="saveFlex">
-          <button className="specialButton" onClick={() => {this.props.add(this.state.header, this.state.body)}}>Save</button>
+          <button className="specialButton" onClick={() => {this.props.add(this.state.header, this.state.body, this.state.hours, this.state.minutes, this.state.ap)}}>Save</button>
         </div>
       </div>
     );

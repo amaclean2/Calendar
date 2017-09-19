@@ -14,8 +14,9 @@ class DayView extends Component {
       for ( i of this.props.events ) {
         if (i.date.getFullYear() === this.props.date.getFullYear()
             && i.date.getMonth() === this.props.date.getMonth()
-            && i.date.getDate() === this.props.date.getDate() )
+            && i.date.getDate() === this.props.date.getDate() ) {
           eventList.push(i);
+        }
       }
     };
     let display = eventList.map(event => {
