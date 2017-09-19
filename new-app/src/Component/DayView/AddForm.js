@@ -6,9 +6,15 @@ class AddForm extends Component {
     this.state = {
       header: null,
       body: null,
+      hours: null,
+      minutes: null,
+      ap: null,
     }
     this.updateHeader=this.updateHeader.bind(this);
     this.updateBody=this.updateBody.bind(this);
+    this.updateHours=this.updateHours.bind(this);
+    this.updateMinutes=this.updateMinutes.bind(this);
+    this.updateAP=this.updateAP.bind(this);
   }
 
   updateHeader(e) {
@@ -19,6 +25,21 @@ class AddForm extends Component {
   updateBody(e) {
     let newBody = e.target.value;
     this.setState({body: newBody});
+  }
+
+  updateHours(e) {
+    let newHours = e.target.value;
+    this.setState({hours: newHours});
+  }
+
+  updateMinutes(e) {
+    let newMinutes = e.target.value;
+    this.setState({minutes: newMinutes});
+  }
+
+  updateAP(e) {
+    let newAP = e.target.value;
+    this.setState({ap: newAP});
   }
 
   render() {
@@ -38,8 +59,10 @@ class AddForm extends Component {
         <div className="time">
           <label>Start Time</label>
           <div className="entries">
-            <input type="number" className="hours time-units" defaultValue="00" />:<input type="number" className="minutes time-units" defaultValue="00" />
-            <select>
+            <input type="number" className="hours time-units" defaultValue="00" onChange={this.updateHours}/>
+            :
+            <input type="number" className="minutes time-units" defaultValue="00" onChange={this.updateMinutes}/>
+            <select onChange={this.updateAP}>
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>

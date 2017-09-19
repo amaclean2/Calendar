@@ -18,13 +18,15 @@ class DayEvent extends Component {
 		this.reset=this.reset.bind(this);
 	}
 
-  toggleDelete() {
-    this.setState({delete: !this.state.delete});
-  }
+	toggleDelete() {
+	  this.setState({delete: !this.state.delete});
+	}
 
-  confirmDelete() {
-    return (this.state.delete) ? <DeleteModal id={this.props.event.id} heading={this.state.header} delete={this.props.delete} close={this.toggleDelete} /> : null;
-  }
+	confirmDelete() {
+	    return (this.state.delete) ? <DeleteModal id={this.props.event.id} heading={this.state.header} delete={this.props.delete} close={this.toggleDelete} /> : null;
+	}
+
+	///
 
 	componentWillMount() {
 		this.setState({header: this.props.event.header, body: this.props.event.body});
@@ -74,24 +76,24 @@ class DayEvent extends Component {
 		}
 	}
 
-  render() {
-  	let views = this.showViews();
-  	let del = this.confirmDelete();
-    return (
-      <div className="dayEvent fadeIn">
-      	{del}
-      	<div className="editButtons">
-      		<span className="close" onClick={this.toggleEdit}>
-	      		<i className="fa fa-pencil" aria-hidden="true"></i>
-	      	</span>
-	      	<span className="close" onClick={this.toggleDelete/**/}>
-	      		<i className="fa fa-times" aria-hidden="true"></i>
-	      	</span>
-      	</div>
-	      {views}
-      </div>
-    );
-  }
+	render() {
+	  	let views = this.showViews();
+	  	let del = this.confirmDelete();
+	    return (
+	      	<div className="dayEvent fadeIn">
+	      		{del}
+	      		<div className="editButtons">
+	      			<span className="close" onClick={this.toggleEdit}>
+		      			<i className="fa fa-pencil" aria-hidden="true"></i>
+		      		</span>
+		      		<span className="close" onClick={this.toggleDelete/**/}>
+		      			<i className="fa fa-times" aria-hidden="true"></i>
+		      		</span>
+	      		</div>
+		      	{views}
+	      	</div>
+	    );
+	}
 }
 
 export default DayEvent;
