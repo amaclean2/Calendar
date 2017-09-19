@@ -29,7 +29,24 @@
 .body {
 	font-size: 13px;
 }
+.time {
+	.entries {
+		margin-left: 10px;
+		display: inline;
 
+		.time-units {
+			padding: 2px;
+			margin: 2px;
+			max-width: 35px;
+			border: 1px solid #EEE;
+			text-align: center;
+		}
+		select {
+			max-width: 50px;
+		}
+	}
+}
+	
 .addOptions {
 	display: flex;
 	justify-content: space-around;
