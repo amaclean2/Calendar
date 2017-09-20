@@ -88,12 +88,20 @@ class DayEvent extends Component {
 					</div>
 				)
 		} else {
+			let hours = this.props.event.hour,
+				minutes = this.props.event.minute;
+			if(hours < 10) {
+				hours = '0' + hours;
+			}
+			if(minutes<10) {
+				minutes = '0' + minutes;
+			}
 			return (
 				<div>
 					<span className="header">{ this.props.event.header }</span>
 					<br />
 	        		<span className="body">
-	        			<span>{ this.props.event.hour }:{ this.props.event.minute } {this.props.event.ap } - </span>
+	        			<span>{ hours }:{ minutes } {this.props.event.ap } - </span>
 	        			{ this.props.event.body }
 	        		</span>
 				</div>

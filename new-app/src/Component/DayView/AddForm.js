@@ -6,9 +6,9 @@ class AddForm extends Component {
     this.state = {
       header: null,
       body: null,
-      hours: null,
-      minutes: null,
-      ap: null,
+      hours: 0,
+      minutes: 0,
+      ap: 'AM',
     }
     this.updateHeader=this.updateHeader.bind(this);
     this.updateBody=this.updateBody.bind(this);
