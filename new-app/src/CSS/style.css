@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700");
 body {
   margin: 0;
-  font-family: 'Roboto', arial; }
+  font-family: 'Roboto', arial;
+  background-color: #763FBA; }
 
 button {
   font-size: 15px;
@@ -68,7 +69,8 @@ label {
   position: relative;
   max-width: 600px;
   width: 100%;
-  margin: 2% auto; }
+  margin: 2% auto;
+  background-color: #FFF; }
   @media screen and (max-width: 650px) {
     .dayView {
       margin: 0 auto;
@@ -80,7 +82,10 @@ label {
   border-radius: 3px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   margin: 10px;
-  position: relative; }
+  position: relative;
+  transition: all 0.3s ease-in-out; }
+  .dayEvent:hover {
+    background-color: #888; }
 
 .header {
   font-size: 20px; }
@@ -180,7 +185,8 @@ label {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   padding: 20px;
-  text-align: center; }
+  text-align: center;
+  background-color: #FFF; }
 
 .deleteModal {
   position: fixed;
@@ -224,7 +230,8 @@ label {
   position: relative;
   max-width: 1200px;
   width: 100%;
-  margin: 2% auto; }
+  margin: 2% auto;
+  background-color: #FFF; }
   @media screen and (max-width: 650px) {
     .monthView {
       box-shadow: none;

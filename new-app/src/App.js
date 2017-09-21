@@ -36,12 +36,20 @@ class App extends Component {
 		this.setState({date: new Date()});
 	}
 
-	add(header, body) {
+	add(header, body, hour, minute, ap) {
 		let year = this.state.date.getFullYear(),
         month = this.state.date.getMonth() + 1,
         day = this.state.date.getDate(),
         newEvents = this.state.events;
-    let data = {header: header, body: body, Assigned_date: "\"" + year + "-" + month + "-" + day + "\"", user: this.state.userId};
+    let data = {
+      header: header,
+      body: body,
+      hour: hour,
+      minute: minute,
+      ap: ap,
+      Assigned_date: "\"" + year + "-" + month + "-" + day + "\"",
+      user: this.state.userId
+    };
 
     let request = new Request('http://localhost:3050/events', {
           method: 'POST',
@@ -58,9 +66,12 @@ class App extends Component {
             day = data.Assigned_date.substr(8, 2),
             date = new Date(year, month - 1, day),
             header = data.header,
+            hour = data.hour,
+            minute = data.minute,
+            ap = data.ap,
             body = data.body,
             id = data._id;
-        newEvents.push({id: id, header: header, body: body, date: date});
+        newEvents.push({id: id, header: header, body: body, hour: hour, minute: minute, ap: ap, date: date});
         this.setState({events: newEvents});
       });
 	}
@@ -84,8 +95,8 @@ class App extends Component {
 			});
 	}
 
-	put(id, header, body) {
-		let data = {header: header, body: body};
+	put(id, header, body, hour, minute, ap) {
+		let data = {header: header, body: body, hour: hour, minute: minute, ap: ap };
 		let request = new Request('http://localhost:3050/events/' + id, {
 			method: 'PUT',
 			headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -111,8 +122,11 @@ class App extends Component {
             date = new Date(year, month - 1, day),
             header = data.header,
             body = data.body,
+            hour = data.hour,
+            minute = data.minute,
+            ap = data.ap,
             id = data._id;
-        newEvents.push({id: id, header: header, body: body, date: date});
+        newEvents.push({id: id, header: header, body: body, hour: hour, minute: minute, ap: ap, date: date});
         this.setState({events: newEvents});
 			});
 	}
@@ -137,9 +151,12 @@ class App extends Component {
 	        	    date = new Date(year, month - 1, day),
 	        	    header = i.header,
 	        	    body = i.body,
+                hour = i.hour,
+                minute = i.minute,
+                ap = i.ap,
 	        	    id = i._id,
 	        	    userId = i.user;
-	        	newEvents.push({id: id, header: header, body: body, date: date, userId: userId});
+	        	newEvents.push({id: id, header: header, body: body, hour: hour, minute: minute, ap: ap, date: date, userId: userId});
 	        }
         }
         this.setState({events: newEvents});

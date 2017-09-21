@@ -6,9 +6,16 @@ class AddForm extends Component {
     this.state = {
       header: null,
       body: null,
+      hours: new Date().getHours() < 13 ? new Date().getHours() : new Date().getHours() - 12,
+      minutes: new Date().getMinutes(),
+      ap: new Date().getHours() < 13 ? 'AM' : 'PM',
     }
     this.updateHeader=this.updateHeader.bind(this);
     this.updateBody=this.updateBody.bind(this);
+    this.updateHours=this.updateHours.bind(this);
+    this.updateMinutes=this.updateMinutes.bind(this);
+    this.updateAP=this.updateAP.bind(this);
+    this.handleFocus=this.handleFocus.bind(this);
   }
 
   updateHeader(e) {
@@ -19,6 +26,29 @@ class AddForm extends Component {
   updateBody(e) {
     let newBody = e.target.value;
     this.setState({body: newBody});
+  }
+
+  updateHours(e) {
+    let newHours = e.target.value;
+    this.setState({hours: newHours});
+    e.target.value = e.target.value < 10 ? '0' + e.target.value : e.target.value;
+    e.target.value = e.target.value.length > 2 ? e.target.value.slice(-2) : e.target.value;
+  }
+
+  updateMinutes(e) {
+    let newMinutes = e.target.value;
+    this.setState({minutes: newMinutes});
+    e.target.value = e.target.value < 10 ? '0' + e.target.value : e.target.value;
+    e.target.value = e.target.value.length > 2 ? e.target.value.slice(-2) : e.target.value;
+  }
+
+  updateAP(e) {
+    let newAP = e.target.value;
+    this.setState({ap: newAP});
+  }
+
+  handleFocus(e) {
+    e.target.select();
   }
 
   render() {
@@ -38,15 +68,17 @@ class AddForm extends Component {
         <div className="time">
           <label>Start Time</label>
           <div className="entries">
-            <input type="number" className="hours time-units" defaultValue="00" />:<input type="number" className="minutes time-units" defaultValue="00" />
-            <select>
+            <input type="number" className="hours time-units" defaultValue={this.state.hours} onChange={this.updateHours} onFocus={this.handleFocus} />
+            :
+            <input type="number" className="minutes time-units" defaultValue={this.state.minutes} onChange={this.updateMinutes} onFocus={this.handleFocus}/>
+            <select onChange={this.updateAP} defaultValue={this.state.ap}>
               <option value="AM">AM</option>
               <option value="PM">PM</option>
             </select>
           </div>
         </div>
         <div className="saveFlex">
-          <button className="specialButton" onClick={() => {this.props.add(this.state.header, this.state.body)}}>Save</button>
+          <button className="specialButton" onClick={() => {this.props.add(this.state.header, this.state.body, this.state.hours, this.state.minutes, this.state.ap)}}>Save</button>
         </div>
       </div>
     );

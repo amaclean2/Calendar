@@ -16,6 +16,18 @@ var EventSchema = new Schema({
     type: String,
     default: ''
   },
+  hour: {
+    type: Number,
+    default: 0
+  },
+  minute: {
+    type: Number,
+    default: 0
+  },
+  ap: {
+    type: String,
+    default: 'AM'
+  },
   Assigned_date: {
     type: Date,
     default: Date.now

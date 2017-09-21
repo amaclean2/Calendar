@@ -11,24 +11,22 @@ class MonthView extends Component {
     let i = 0, long = headers.longHeaders.map(day => {
       return (
         <li key={day}>{ day }</li>
-        )
-    }),
-        short = headers.shortHeaders.map(day => {
-          i++;
-          return (
-            <li key={i}>{ day }</li>
-          );
-        });
-    return (
-        <div>
-          <ul className="largeScreenHeader">
-            { long }
-          </ul>
-          <ul className="smallScreenHeader">
-            { short }
-          </ul>
-        </div>
       )
+    }),
+    short = headers.shortHeaders.map(day => {
+      i++;
+      return (<li key={i}>{ day }</li>);
+    });
+    return (
+      <div>
+        <ul className="largeScreenHeader">
+          { long }
+        </ul>
+        <ul className="smallScreenHeader">
+          { short }
+        </ul>
+      </div>
+    )
   }
   showDays() {
     let i = 0, prevDay = 0, wrongMonth = true, darkDay, month = monthArray(this.props.date).map( week => {
@@ -57,11 +55,25 @@ class MonthView extends Component {
     return <div>{month}</div>
   }
 
+  getLocation() {
+    let coords = null;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {coords = pos});
+      while ( coords === null ) {
+        setTimeout(() => {
+
+        }, 500);
+      }
+      return coords;
+    }
+  }
+
   componentWillMount() {
     this.props.get();
   }
 
   render() {
+    this.getLocation();
     let head = this.showHeaders();
     let month = this.showDays();
     let title = months[this.props.date.getMonth()] + ', ' + this.props.date.getFullYear();

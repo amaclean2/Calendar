@@ -8,6 +8,9 @@ class DayEvent extends Component {
 		this.state = {
 			header: null,
 			body: null,
+			hour: null,
+			minute: null,
+			ap: null,
 			edit: false,
 			delete: false
 		}
@@ -15,16 +18,21 @@ class DayEvent extends Component {
 		this.toggleEdit=this.toggleEdit.bind(this);
 		this.editHeader=this.editHeader.bind(this);
 		this.editBody=this.editBody.bind(this);
+		this.editHour=this.editHour.bind(this);
+		this.editMinute=this.editMinute.bind(this);
+		this.editAP=this.editAP.bind(this);
 		this.reset=this.reset.bind(this);
 	}
 
-  toggleDelete() {
-    this.setState({delete: !this.state.delete});
-  }
+	toggleDelete() {
+	  this.setState({delete: !this.state.delete});
+	}
 
-  confirmDelete() {
-    return (this.state.delete) ? <DeleteModal id={this.props.event.id} heading={this.state.header} delete={this.props.delete} close={this.toggleDelete} /> : null;
-  }
+	confirmDelete() {
+	    return (this.state.delete) ? <DeleteModal id={this.props.event.id} heading={this.state.header} delete={this.props.delete} close={this.toggleDelete} /> : null;
+	}
+
+	///
 
 	componentWillMount() {
 		this.setState({header: this.props.event.header, body: this.props.event.body});
@@ -42,6 +50,21 @@ class DayEvent extends Component {
 	editBody(e) {
 		let newBody = e.target.value;
 		this.setState({body: newBody});
+	}
+
+	editHour(e) {
+		let newHour = e.target.value;
+		this.setState({hour: newHour});
+	}
+
+	editMinute(e) {
+		let newMinute = e.target.value;
+		this.setState({minute: newMinute});
+	}
+
+	editAP(e) {
+		let newAP = e.target.value;
+		this.setState({ap: newAP});
 	}
 
 	reset() {
@@ -65,33 +88,45 @@ class DayEvent extends Component {
 					</div>
 				)
 		} else {
+			let hours = this.props.event.hour,
+				minutes = this.props.event.minute;
+			if(hours < 10) {
+				hours = '0' + hours;
+			}
+			if(minutes<10) {
+				minutes = '0' + minutes;
+			}
 			return (
 				<div>
-					<span className="header">{ this.props.event.header }</span><br />
-	        <span className="body">{ this.props.event.body }</span>
+					<span className="header">{ this.props.event.header }</span>
+					<br />
+	        		<span className="body">
+	        			<span>{ hours }:{ minutes } {this.props.event.ap } - </span>
+	        			{ this.props.event.body }
+	        		</span>
 				</div>
-				)
+			)
 		}
 	}
 
-  render() {
-  	let views = this.showViews();
-  	let del = this.confirmDelete();
-    return (
-      <div className="dayEvent fadeIn">
-      	{del}
-      	<div className="editButtons">
-      		<span className="close" onClick={this.toggleEdit}>
-	      		<i className="fa fa-pencil" aria-hidden="true"></i>
-	      	</span>
-	      	<span className="close" onClick={this.toggleDelete/**/}>
-	      		<i className="fa fa-times" aria-hidden="true"></i>
-	      	</span>
-      	</div>
-	      {views}
-      </div>
-    );
-  }
+	render() {
+	  	let views = this.showViews();
+	  	let del = this.confirmDelete();
+	    return (
+	      	<div className="dayEvent fadeIn">
+	      		{del}
+	      		<div className="editButtons">
+	      			<span className="close" onClick={this.toggleEdit}>
+		      			<i className="fa fa-pencil" aria-hidden="true"></i>
+		      		</span>
+		      		<span className="close" onClick={this.toggleDelete/**/}>
+		      			<i className="fa fa-times" aria-hidden="true"></i>
+		      		</span>
+	      		</div>
+		      	{views}
+	      	</div>
+	    );
+	}
 }
 
 export default DayEvent;
