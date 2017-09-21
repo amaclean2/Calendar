@@ -8,7 +8,6 @@
 	width: 100%;
 	margin: 2% auto;
 	background-color: #FFF;
-	opacity: 0.9;
 	@media screen and (max-width: 650px) {
 		margin: 0 auto;
 		box-shadow: none;
@@ -22,6 +21,10 @@
 	box-shadow: 0 1px 5px rgba(0,0,0,0.3);
 	margin: 10px;
 	position: relative;
+	transition: all 0.3s ease-in-out;
+	&:hover {
+		background-color: #888;
+	}
 }
 
 .header {
